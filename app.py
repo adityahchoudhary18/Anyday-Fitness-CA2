@@ -18,6 +18,8 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
+
+
 # -----------------------------------------------------------------------------
 # Database connection and data access
 # -----------------------------------------------------------------------------
@@ -28,10 +30,12 @@ def database_config():
         config = st.secrets["mysql"]
         return {
             "host": config["host"],
-            "port": int(config.get("port", 3306)),
+            "port": int(config.get("port", 4000)),
             "user": config["user"],
             "password": config["password"],
             "database": config.get("database", "gym_data"),
+            "ssl_verify_cert": True,
+            "ssl_verify_identity": True,
         }
     except (KeyError, FileNotFoundError, AttributeError):
         return {
@@ -42,9 +46,19 @@ def database_config():
             "database": os.getenv("DB_NAME", "gym_data"),
         }
 
-
 def get_connection():
     return mysql.connector.connect(**database_config())
+
+def check_database_server():
+    connection = get_connection()
+    try:
+        cursor = connection.cursor()
+        cursor.execute("SELECT DATABASE(), VERSION()")
+        result = cursor.fetchone()
+        cursor.close()
+        return result
+    finally:
+        connection.close()
 
 
 def read_query(query, params=None):
