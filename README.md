@@ -159,7 +159,7 @@ For deployment:
 ```toml
 [mysql]
 host = "YOUR_DATABASE_HOST"
-port = 3306
+port = 4000
 user = "YOUR_DATABASE_USER"
 password = "YOUR_DATABASE_PASSWORD"
 database = "gym_data"
@@ -170,14 +170,38 @@ database = "gym_data"
 Never commit real credentials to the repository.
 
 ## 10. Verification status
+10. Verification Status
 
-The project files and setup instructions are prepared. The following activities must be completed and verified in the user's environment before they can be reported as successful:
+The Anyday Fitness Management System has been successfully developed, tested, published on GitHub and deployed using Streamlit Community Cloud.
 
-- MySQL database creation and Python connection
-- Initial import of all 1,000 CA1 member records
-- Testing Create, Read, Update and Delete operations against MySQL
-- GitHub publication
-- Hosted database configuration and live deployment
-- Testing the deployed application
+Completed Verification
 
-Use the verification checklist in `docs/USER_GUIDE.md` to record the outcome of each test.
+* Database integration: Successfully connected Python and Streamlit to the gym_data database hosted on TiDB Cloud.
+* Data import: Imported the original CA1 fitness dataset into four relational database tables.
+* Create: Successfully added new member records through the deployed application.
+* Read: Successfully viewed and searched member records.
+* Update: Successfully modified existing member details.
+* Delete: Successfully deleted selected member records.
+* Real-time functionality: Confirmed that database changes are reflected in the deployed application.
+* GitHub: Published the project source code and documentation.
+* Live deployment: Successfully deployed the application using Streamlit Community Cloud.
+* Final database verification: Confirmed that the live application displays 1,001 member records following testing and restoration of the original member data.
+
+Technology Stack
+
+* Frontend: Streamlit
+* Backend: Python
+* Database: MySQL-compatible TiDB Cloud
+* Database connectivity: MySQL Connector/Python
+* Version control: Git and GitHub
+* Hosting: Streamlit Community Cloud
+
+Live Application
+
+Add your deployed Streamlit application URL here.
+
+GitHub Repository
+
+https://github.com/adityahchoudhary18/Anyday-Fitness-CA2
+
+
